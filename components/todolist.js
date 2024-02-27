@@ -1,14 +1,14 @@
-import { ScrollView, Text, StyleSheet } from 'react-native';
-export default ToDoList;
+import React from 'react';
+import { ScrollView, Text } from 'react-native';
 
-
-const ToDoList = () => {
+const ToDoList = ({ todos }) => {
   return (
-    <ScrollView style={styles.list}>
-      <Text>ToDoList</Text>
-        
+    <ScrollView>
+      {todos.map((todo) => (
+        <Text key={todo.id}>{todo.task}</Text>
+      ))}
     </ScrollView>
   );
-}
+};
 
-
+export default ToDoList;

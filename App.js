@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import ToDoList from './components/todolist';
+import ToDoForm from './components/todoform'; 
 
 export default function App() {
   const [task, setTask] = useState('');
@@ -23,18 +25,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>ToDo List</Text>
-      {todos.map((todo) => (
-        <Text key={todo.id}>{todo.task}</Text>
-      ))}
-      <View style={styles.formContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter task"
-          value={task}
-          onChangeText={(text) => setTask(text)}
-        />
-        <Button title="Add Task" onPress={handleAddTask} />
-      </View>
+      <ToDoList todos={todos} />
+      <ToDoForm task={task} setTask={setTask} handleAddTask={handleAddTask} />
     </View>
   );
 }
@@ -51,16 +43,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  formContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  input: {
-    flex: 1,
-    height: 40,
-    borderWidth: 1,
-    marginRight: 10,
-    paddingHorizontal: 10,
-  },
 });
-
