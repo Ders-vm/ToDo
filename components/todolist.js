@@ -1,24 +1,41 @@
-// ToDoList.js
 import React from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Pressable} from 'react-native';
 
-const ToDoList = ({ todos }) => {
-  const staticList = [
-    { id: 1, task: 'Task 1' },
-    { id: 2, task: 'Task 2' },
-    { id: 3, task: 'Task 3' },
-  ];
+// Assuming styles are defined in this file or imported from another stylesheet
+const styles = StyleSheet.create({
+    task: {
+        padding: 10,
+        borderBottomWidth: 1,
+        borderColor: '#ccc',
+    },
+    completed: {
+        backgroundColor: '#e0e0e0',
+    },
+    taskText: {
+        fontSize: 16,
+    },
+});
 
-  return (
-    <ScrollView>
-      {staticList.map((todo) => (
-        <Text key={todo.id}>{todo.task}</Text>
-      ))}
-      {todos.map((todo) => (
-        <Text key={todo.id}>{todo.task}</Text>
-      ))}
-    </ScrollView>
-  );
-};
+function ToDoList() {
+    return (
+        <ScrollView>
+            <Pressable>
+                <View style={[styles.task, styles.completed]}>
+                    <Text style={styles.taskText}>Do laundry</Text>
+                </View>
+            </Pressable>
+            <Pressable>
+                <View style={[styles.task]}>
+                    <Text style={styles.taskText}>Go to gym</Text>
+                </View>
+            </Pressable>
+            <Pressable>
+                <View style={[styles.task, styles.completed]}>
+                    <Text style={styles.taskText}>Walk dog</Text>
+                </View>
+            </Pressable>
+        </ScrollView>
+    );
+}
 
 export default ToDoList;
