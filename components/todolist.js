@@ -2,8 +2,7 @@ import React from 'react';
 import { ScrollView, View, Text, StyleSheet, Pressable } from 'react-native';
 
 const styles = StyleSheet.create({
-    // Styles remain the same as before
-});
+ });
 
 function ToDoList({ tasks }) {
     return (

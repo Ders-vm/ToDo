@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import ToDoList from './components';
-import ToDoForm from './components';
+import ToDoList from './components/ToDoList';
+import ToDoForm from './components/ToDoForm';
+
 
 function App() {
     const [tasks, setTasks] = useState([
@@ -15,9 +16,19 @@ function App() {
         setTasks([...tasks, newTask]);
     };
 
+    const toggleTaskCompleted = (id) => {
+        const updatedTasks = tasks.map((task) => {
+            if (task.id === id) {
+                return { ...task, completed: !task.completed };
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+    };
+
     return (
         <SafeAreaView style={styles.container}>
-            <ToDoList tasks={tasks} />
+            <ToDoList tasks={tasks} onToggleTaskCompleted={toggleTaskCompleted} />
             <ToDoForm onAddTask={addTask} />
         </SafeAreaView>
     );
