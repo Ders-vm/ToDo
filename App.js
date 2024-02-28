@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import ToDoList from './components/ToDoList';
-import ToDoForm from './components/ToDoForm';
+import ToDoList from './components';
+import ToDoForm from './components';
 
 function App() {
     const [tasks, setTasks] = useState([

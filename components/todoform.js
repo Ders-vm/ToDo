@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    // Styles remain the same as before
 });
 
 function ToDoForm({ onAddTask }) {
