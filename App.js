@@ -1,18 +1,17 @@
 // App.js
 import React, { useState } from 'react';
 import { View, StyleSheet} from 'react-native';
-import ToDoList from './ToDoList'; // Import ToDoList component
-import ToDoForm from './ToDoForm'; // Import ToDoForm component
+import ToDoList from './components/ToDoList'; // Import ToDoList component
+import ToDoForm from './components/ToDoForm'; // Import ToDoForm component
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#121212', // Dark background, off-black
+      backgroundColor: '#121212',
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: 40,
     },
-    // Add your other styles here
 });
 
 function App() {
@@ -37,9 +36,18 @@ function App() {
         setTasks(updatedTasks);
     };
 
+    const clearAllTasks = () => {
+        setTasks([]);
+    };
+
+    const removeTask = (id) => {
+        const updatedTasks = tasks.filter(task => task.id !== id);
+        setTasks(updatedTasks);
+    };
+
     return (
         <View style={styles.container}>
-            <ToDoList tasks={tasks} onToggleTaskCompleted={toggleTaskCompleted} />
+            <ToDoList tasks={tasks} onToggleTaskCompleted={toggleTaskCompleted} onClearAllTasks={clearAllTasks} onRemoveTask={removeTask} />
             <ToDoForm onAddTask={addTask} />
         </View>
     );

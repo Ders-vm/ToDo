@@ -1,7 +1,22 @@
+// ToDoForm.js
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    form: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginHorizontal: 20,
+        marginBottom: 20,
+    },
+    input: {
+        flex: 1,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        paddingHorizontal: 10,
+        marginRight: 10,
+        color: 'white', 
+    },
 });
 
 function ToDoForm({ onAddTask }) {
@@ -20,8 +35,9 @@ function ToDoForm({ onAddTask }) {
                 placeholder="Add a new task..."
                 value={text}
                 onChangeText={setText}
+                placeholderTextColor="gray" 
             />
-            <Button title="Add" onPress={handleSubmit} />
+            <Button title="Add" onPress={handleSubmit} color="teal" />
         </View>
     );
 }
